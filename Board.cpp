@@ -1,7 +1,5 @@
 #include <iostream>
 #include "Board.hpp"
-#include <ctime>
-#include <cstdlib>
 
 Board::Board(){
     numCols = 3;
