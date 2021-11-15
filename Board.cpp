@@ -7,10 +7,6 @@ Board::Board(){
     max = 0;
     target = 32;
     panel[3][3];
-    panel = new int*[3];
-    for(int i = 0; i < 3; i++){
-        panel[i] = new int[3];
-    }//*/
 }
 Board::Board(int m){
     numRows = m;
@@ -18,20 +14,13 @@ Board::Board(int m){
     max = 0;
     target = 32;
     panel[m][m];
-    panel = new int*[m];
-    for(int i = 0; i < m; i++){
-        panel[i] = new int[m];
-    }//*/
 }
 Board::Board(int m, int n){
     numRows = m;
     numCols = n;
     max = 0;
     target = 32;
-    panel = new int*[m];
-    for(int i = 0; i < m; i++){
-        panel[i] = new int[n];
-    }//*/
+    panel[m][n];
 }
 Board::~Board(){
     delete panel;
@@ -40,13 +29,27 @@ void Board::setGoal(int goal){
     this->target = goal;
 }
 void Board::print() const{
-    std::cout << "+----+----+----+\n";
-    for(int i = 0; i < numRows; i++){
+    for(int i = 0; i < numCols; i++){
+        std::cout << "+----";
+    }
+    std::cout << "+" << std::endl;
+    for(int i = 0; i < numRows*2; i++){
         for(int j = 0; j < numCols; j++){
-            std::cout << "|   " << panel[i][j]; 
+            if(i % 2 == 0){
+                std::cout << "|    ";
+                if( j == numCols-1){
+                    std::cout << "|";
+                }
+            } 
+            else if(i % 2 != 0){
+                std::cout << "+----";
+                if(j == numCols -1){
+                    std::cout << "+";
+                }
+            }
         }
-        std::cout << "|\n+----+----+----+\n";
+        std::cout << std::endl;
+        //std::cout << "|\n+----+----+----+\n";
     }
 }
-
 
