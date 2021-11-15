@@ -23,9 +23,9 @@ Board::Board(int m, int n){
     panel[m][n];
 }
 Board::~Board(){
-    delete panel;
+    
 }
-void Board::setGoal(int goal){
+void Board::setTarget(int goal){
     this->target = goal;
 }
 void Board::print() const{
