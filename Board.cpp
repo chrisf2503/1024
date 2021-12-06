@@ -70,7 +70,7 @@ bool Board::noAdjacentSameValue() const{
     }
     for(int i = 0; i < numCols; i++){
         for(int j = 0; j < numRows-1; j++){
-            if(panel[i][j] == panel[i+1][j){
+            if(panel[i][j] == panel[i+1][j]){
                 return false;
             }
         }
@@ -88,7 +88,7 @@ void Board::selectRandomCell(int& row, int& col){
     }
     if(countZero == 0){
         if(noAdjacentSameValue() == true && max < target){
-            std::cout << << "Game over. Try again." << '\n';
+            std::cout << "Game over. Try again." << '\n';
             exit(0);
         }
         else{
@@ -114,7 +114,7 @@ void Board::selectRandomCell(int& row, int& col){
     noValue = nullptr;
     print();
     if(countZero == 1 && noAdjacentSameValue() == true && max < target){
-        std::cout << << "Game over. Try again." << '\n';
+        std::cout << "Game over. Try again." << '\n';
         exit(0);
     }
 
