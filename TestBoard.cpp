@@ -7,6 +7,10 @@ int main()
 {
     Board game(3, 3);
     game.print();
+    int row = 3;
+    int col = 3;
+    //game.clear();
+    //game.selectRandomCell(row, col);
     //game.print();
 
     //coloring output in console output in c++ in linux

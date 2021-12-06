@@ -13,10 +13,10 @@ private:
     int max; //the current max in all cells of panel
 
 public:
-    Board(); //construct a 3 x 3 panel
-    Board(int m); //construct a m x m panel
-    Board(int m, int n); //construct a m x n panel
-    void setGoal(int goal);
+    Board(); //construct a 3 x 3 panel. Done
+    Board(int m); //construct a m x m panel. Done
+    Board(int m, int n); //construct a m x n panel. Done
+    void setGoal(int goal);//done
         //set goal of the game
     ~Board(); //destructor,
         //when no longer need the current object,
@@ -27,7 +27,7 @@ public:
         //numCols columns
     void clear();
         //set each cell of the panel to be zero
-    void print() const;
+    void print() const;//done
         //print the panel
     void selectRandomCell(int& row, int& col);
         //select a random cell from empty cell
