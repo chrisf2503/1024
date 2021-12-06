@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <vector>
 
 Board::Board(){
     numCols = 3;
@@ -79,10 +80,15 @@ bool Board::noAdjacentSameValue() const{
 }//*/
 void Board::selectRandomCell(int& row, int& col){
     int countZero = 0;
+    std::vector<int*> cell;
+    int points[2];
     for(int i = 0; i < numRows; i++){
         for(int j = 0; j < numCols; j++){
             if(panel[i][j] == 0){
                 countZero++;
+                points[0]=i;
+                points[1]=j;
+                cell.push_back(points);
             }
         }
     }
@@ -95,25 +101,10 @@ void Board::selectRandomCell(int& row, int& col){
             return;
         }
     }
-    int *noValue = new int[countZero];
-    int index = 0;
-    for(int i = 0; i < numRows; i++){
-        for(int j = 0; j < numCols; j++){
-            if(panel[i][j] == 0){
-                noValue[index] = numCols * i + j;
-                index++;
-            }
-        }
-    }
-    int ran = rand() % countZero;
-    int element = noValue[ran];
-    int newRow = element / countZero;
-    int newCol = element % countZero;
-    panel[newRow][newCol] = 1;
-    delete[] noValue;
-    noValue = nullptr;
+    int ran = rand()%cell.size()+0;
+    panel[cell[ran][0]][cell[ran][1]] = 1;
     print();
-    if(countZero == 1 && noAdjacentSameValue() == true && max < target){
+    if(noAdjacentSameValue()){
         std::cout << "Game over. Try again." << '\n';
         exit(0);
     }
