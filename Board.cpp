@@ -26,14 +26,14 @@ Board::Board(int m, int n){
     target = 32;
     panel[m][n];
 }
-Board::~Board(){
+/*Board::~Board(){
     for(int i = 0; i < numRows; i++){
         delete[] panel[i];
         panel[i] = nullptr;
     }
     delete[] panel;
     panel = nullptr;
-}
+}*/
 void Board::setTarget(int goal){
     this->target = goal;
 }
@@ -58,7 +58,7 @@ void Board::print() const{
             }
         }
         std::cout << std::endl;
-        //std::cout << "|\n+----+----+----+\n";
+        std::cout << "|\n+----+----+----+\n";
     }
 }
 bool Board::noAdjacentSameValue() const{
@@ -101,9 +101,11 @@ void Board::selectRandomCell(int& row, int& col){
             return;
         }
     }
-    int ran = rand()%cell.size()+0;
-    panel[cell[ran][0]][cell[ran][1]] = 1;
-    print();
+    if (cell.size() != 0){
+        int ran = rand()%cell.size()+0;
+        panel[cell[ran][0]][cell[ran][1]] = 1;
+        print();
+    }
     if(noAdjacentSameValue()){
         std::cout << "Game over. Try again." << '\n';
         exit(0);
